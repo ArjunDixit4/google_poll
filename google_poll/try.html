@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+      <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>   -->
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>  
+          <style type="text/css">
+           #section{
+            
+              /*padding: 50px 50px 50px 50px ;*/
+              color: darkred;
+              background-color: lightyellow;
+              padding: 100px 100px 0px 500px;
+            }
+            .container{
+
+            }
+            #poll_form{
+              padding-left: 20px;
+            }
+            #poll_form_new
+            {
+              padding-left: 100px;
+            }
+          </style>
+
+    <title>HTML Form to Google Sheets - Pure Coding</title>
+</head>
+<body>
+       <form class="mySlides"  style="width:100%" method="post" id="poll_form" name="google-sheet" action="">  <h3>What do you do during meeting time?</h3>
+              <div class="radio">
+                <label><h4><input type="radio" name="poll_option" class="poll_option" value="Breakfast" /> Breakfast</h4></label>
+              </div>
+              
+              <div class="radio">
+                <label><h4><input type="radio" name="poll_option" class="poll_option" value="Chatting with friends" /> Chatting with friends</h4></label>
+              </div>
+              <div class="radio">
+                <label><h4><input type="radio" name="poll_option" class="poll_option" value="Listening Songs" /> Listening Songs</h4></label>
+              </div>
+              <div class="radio">
+                <label><h4><input type="radio" name="poll_option" class="poll_option" value="Watching Tv" /> Watching Tv</h4></label>
+              </div>
+              <div class="radio">
+                <label><h4><input type="radio" name="poll_option" class="poll_option" value="Sleeping" /> Sleeping</h4></label>
+              </div>
+              <br />
+             
+             <!--  <a href="second.php"><input type="button" value="Next" name="poll_button" id="poll_button" class="btn btn-danger" /></a> -->
+              
+            
+              <h3>Which teacher looks good?</h3>
+              <div class="radio">
+                <label><h4><input type="radio" name="poll_option1" class="poll_option" value="Ram" /> Ram</h4></label>
+              </div>
+              
+              <div class="radio">
+                <label><h4><input type="radio" name="poll_option1" class="poll_option" value="Sham" /> Sham</h4></label>
+              </div>
+              <div class="radio">
+                <label><h4><input type="radio" name="poll_option1" class="poll_option" value="tony" /> tony</h4></label>
+              </div>
+              <div class="radio">
+                <label><h4><input type="radio" name="poll_option1" class="poll_option" value="jack" /> jack</h4></label>
+              </div>
+              <div class="radio">
+                <label><h4><input type="radio" name="poll_option1" class="poll_option" value="ravi" /> ravi</h4></label>
+              </div>
+              <br />
+              <a href="redirect.php" name="poll_button"><input type="button" value="Submit" name="poll_button" id="poll_button" class="btn btn-danger"  style="background-color: blue;" /></a>
+            <!--  <input type="button" value="Next" name="poll_button" id="poll_button" class="btn btn-primary" /> -->
+            <!-- <a href="index.php"><input type="button" value="Back" name="poll_button" id="poll_button" class="btn btn-danger" /></a> -->
+            </form>
+              
+             <!--  </form> -->
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbyU-WG0M_DFSRuvdmsIKuwxg7FcVC8tY8BLCSZfLPoX_BtrgwH0o_KuH-S9PflKwYnA/exec'
+        const form = document.forms['google-sheet']
+
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => $("#form_alerts").html("<div class='alert alert-success'>Contact message sent successfully.</div>"))
+            .catch(error => $("#form_alerts").html("<div class='alert alert-danger'>Contact message not sent.</div>"))
+        })
+    </script>
+     
+
+</body>
+</html>
